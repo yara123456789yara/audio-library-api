@@ -1,5 +1,6 @@
 import { audioModel } from "../../../database/models/audio.model.js";
-
+import fs from "fs";
+import path from "path";
 
 
 const getAllAudiosForAdmin = async (req, res) => {
@@ -11,9 +12,6 @@ const getAllAudiosForAdmin = async (req, res) => {
     }
 }
 
-import fs from "fs";
-import path from "path";
-import { Audio } from "../models/audio.model.js";
 
 export const deleteAudio = async (req, res) => {
     try {

@@ -1,17 +1,39 @@
 import mongoose from "mongoose";
 
-
-
-const audioSchema = new mongoose.Schema({
-    title: String,
-    desc: String,
-    category: String,
-    fileUrl:String,
+const audioSchema = new mongoose.Schema(
+  {
+    title: {
+      type: String,
+      required: [true, "Title is required"],
+      minlength: 3,
+    },
+    desc: {
+      type: String,
+    },
+    genre: {
+      type: String,
+      enum: ["podcast", "audiobook", "lecture", "music"],
+      required: [true, "Genre is required"],
+    },
+    isPrivate: {
+      type: Boolean,
+      default: false,
+    },
+    audioPath: {
+      type: String,
+      required: true,
+    },
+    coverPath: {
+      type: String,
+    },
     duration: Number,
     uploadedBy: {
-        type: mongoose.Types.ObjectId,
-        ref:'user'
-    }
-}, { timestamps: true })
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "User",
+      required: true,
+    },
+  },
+  { timestamps: true }
+);
 
-export const audioModel = mongoose.model('audio',audioSchema)
+export const audioModel = mongoose.model("Audio", audioSchema);

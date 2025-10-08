@@ -4,7 +4,8 @@ const audioSchema = new mongoose.Schema({
     title: String,
     desc: String,
     category: String,
-    fileUrl:String,
+    fileUrl: String,
+    coverUrl: String,
     duration: Number,
     uploadedBy: {
         type: mongoose.Types.ObjectId,

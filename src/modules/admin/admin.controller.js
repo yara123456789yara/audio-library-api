@@ -1,6 +1,7 @@
-import { audioModel } from "../../../database/models/audio.model.js";
-import fs from "fs";
-import path from "path";
+const audioModel = require("../../../database/models/audio.model.js");
+const fs = require("fs");
+const path = require("path");
+
 
 
 const getAllAudiosForAdmin = async (req, res) => {
@@ -13,7 +14,7 @@ const getAllAudiosForAdmin = async (req, res) => {
 }
 
 
-export const deleteAudio = async (req, res) => {
+ const deleteAudio = async (req, res) => {
     try {
     const audio = await Audio.findById(req.params.id);
 
@@ -47,7 +48,7 @@ export const deleteAudio = async (req, res) => {
 
 
 
-export {
-    getAllAudiosForAdmin,
-    deleteAudio
-}
+module.exports = {
+  getAllAudiosForAdmin,
+  deleteAudio
+};

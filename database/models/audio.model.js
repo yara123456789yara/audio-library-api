@@ -1,4 +1,5 @@
-import mongoose from "mongoose";
+const mongoose = require('mongoose');
+
 
 const audioSchema = new mongoose.Schema(
   {
@@ -36,4 +37,5 @@ const audioSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
-export const audioModel = mongoose.model("Audio", audioSchema);
+const audioModel = mongoose.model("Audio", audioSchema);
+ module.exports={audioModel}

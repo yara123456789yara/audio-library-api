@@ -1,4 +1,4 @@
-export function adminOnly(req, res, next) {
+ function adminOnly(req, res, next) {
     if (req.user && req.user.role === "admin") {
     next();
     } else {
@@ -6,7 +6,7 @@ export function adminOnly(req, res, next) {
     }
 }
 
-export function validateObjectId(paramName) {
+ function validateObjectId(paramName) {
     return (req, res, next) => {
     if (!mongoose.Types.ObjectId.isValid(req.params[paramName])) {
         return res.status(400).json({ message: `Invalid ${paramName}` });
@@ -14,3 +14,8 @@ export function validateObjectId(paramName) {
     next();
     };
 }
+
+module.exports = {
+  validateObjectId,
+  adminOnly
+};

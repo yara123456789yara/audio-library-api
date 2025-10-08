@@ -1,8 +1,14 @@
 require('dotenv').config();
 const jwt = require('jsonwebtoken');
-function generatetoken(userId, email){
+function generateAccesstoken(userId, email){
     const payloud ={userId ,email};
     const secretkey = process.env.JWT_SECRET;
-     const token = jwt.sign(payloud,secretkey,{expiresIn :'1h'});
+     const accessToken = jwt.sign(payloud,secretkey,{expiresIn :'1h'});
 };
-module.exports={generatetoken};
+function  generaterefreshtoken(userId){
+    const payloud ={userId};
+    const secretkey = process.env.JWT_SECRET_REFRESH;
+    const refreshToken = jwt.sign(payloud,secretkey,{expiresIn :'7d'});
+
+}
+module.exports={ generateAccesstoken, generaterefreshtoken };
